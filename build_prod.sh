@@ -1,4 +1,5 @@
 #!/bin/bash
+rm -rf public
 mkdir public
 cp index.html public/index.html
 
