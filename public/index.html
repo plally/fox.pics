@@ -1,0 +1,78 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Main</title>
+	<script src="elm.js"></script>
+</head>
+
+<body>
+	<style>
+ 		:root {
+        	font-size: 16px;
+        	--nav-background-primary: #222;;
+    	}
+		
+		body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			background-color: black;
+		}
+		.rootcontainer {
+			height: 100%;
+			max-height: 100%;
+			padding: 0;
+			margin: 0;
+			display: flex;
+			flex-flow: column;
+    	}
+		.fox-container {
+        	background-color: black;
+        	flex: 1;
+        	overflow: hidden;
+    	}
+
+		.fox-img {
+			width: 100%;
+			height: 100%;
+			max-width: 100%;
+			max-height: 100%;
+
+			object-fit: contain;
+		}
+		.navbar {
+			width: 100%;
+			padding: 0;
+			margin: 0;
+			background-color: var(--nav-background-primary);
+		}
+
+		.nav-button {
+			position: relative;
+			background-color: var(--nav-background-primary);
+			color: lightgray;
+			float: left;
+			align-items: center;
+			padding: 1.2rem 1.2rem;
+			text-decoration: none;
+		}
+
+		.nav-button:hover {
+			transition: 500ms;
+			background-color: orange;
+		}
+	</style>
+	<div id="myapp"></div>
+	<script>
+		var app = Elm.Main.init({
+		node: document.getElementById('myapp')
+		})
+		app.ports.writeClipboard.subscribe(function(message) {
+			copyToClipboard(message)
+		})
+		async function copyToClipboard(text) {
+			await navigator.clipboard.writeText(text)
+		}
+	</script>
+</body>
+</html>
