@@ -93,18 +93,26 @@ view model =
     Failure ->
       text "Could not load the fox"
 
-    Loading ->
-      text "Loading..."
+    Loading -> 
+      container [
+        navbar
+      ]
 
     Success foxUrl ->
-      div [class "rootcontainer"] [
-        div [class "navbar"]
-        [
-          div [class "nav-button", onClick CopyToClipboard] [Icons.copyToClipboard],
-          div [class "nav-button", onClick GetFox] [Icons.newFox]
-        ]
+      container [
+        navbar
         ,div [class "fox-container"]
         [
           img [class "fox-img", src foxUrl] []
         ]
       ]
+
+container elements =
+  div [class "rootcontainer"] elements
+
+navbar = 
+  div [class "navbar"]
+  [
+    div [class "nav-button", onClick CopyToClipboard] [Icons.copyToClipboard],
+    div [class "nav-button", onClick GetFox] [Icons.newFox]
+  ]

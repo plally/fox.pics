@@ -6160,8 +6160,6 @@ var $author$project$Main$update = F2(
 				}
 		}
 	});
-var $author$project$Main$CopyToClipboard = {$: 'CopyToClipboard'};
-var $author$project$Main$GetFox = {$: 'GetFox'};
 var $elm$html$Html$Attributes$stringProperty = F2(
 	function (key, string) {
 		return A2(
@@ -6170,6 +6168,19 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 			$elm$json$Json$Encode$string(string));
 	});
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
+var $elm$html$Html$div = _VirtualDom_node('div');
+var $author$project$Main$container = function (elements) {
+	return A2(
+		$elm$html$Html$div,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$class('rootcontainer')
+			]),
+		elements);
+};
+var $elm$html$Html$img = _VirtualDom_node('img');
+var $author$project$Main$CopyToClipboard = {$: 'CopyToClipboard'};
+var $author$project$Main$GetFox = {$: 'GetFox'};
 var $elm$svg$Svg$Attributes$class = _VirtualDom_attribute('class');
 var $elm$svg$Svg$Attributes$d = _VirtualDom_attribute('d');
 var $elm$svg$Svg$Attributes$fill = _VirtualDom_attribute('fill');
@@ -6224,8 +6235,6 @@ var $author$project$Icons$copyToClipboard = A2(
 				]),
 			_List_Nil)
 		]));
-var $elm$html$Html$div = _VirtualDom_node('div');
-var $elm$html$Html$img = _VirtualDom_node('img');
 var $elm$svg$Svg$Attributes$points = _VirtualDom_attribute('points');
 var $elm$svg$Svg$polyline = $elm$svg$Svg$trustedNode('polyline');
 var $author$project$Icons$newFox = A2(
@@ -6276,6 +6285,33 @@ var $elm$html$Html$Events$onClick = function (msg) {
 		'click',
 		$elm$json$Json$Decode$succeed(msg));
 };
+var $author$project$Main$navbar = A2(
+	$elm$html$Html$div,
+	_List_fromArray(
+		[
+			$elm$html$Html$Attributes$class('navbar')
+		]),
+	_List_fromArray(
+		[
+			A2(
+			$elm$html$Html$div,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('nav-button'),
+					$elm$html$Html$Events$onClick($author$project$Main$CopyToClipboard)
+				]),
+			_List_fromArray(
+				[$author$project$Icons$copyToClipboard])),
+			A2(
+			$elm$html$Html$div,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('nav-button'),
+					$elm$html$Html$Events$onClick($author$project$Main$GetFox)
+				]),
+			_List_fromArray(
+				[$author$project$Icons$newFox]))
+		]));
 var $elm$html$Html$Attributes$src = function (url) {
 	return A2(
 		$elm$html$Html$Attributes$stringProperty,
@@ -6289,44 +6325,15 @@ var $author$project$Main$view = function (model) {
 		case 'Failure':
 			return $elm$html$Html$text('Could not load the fox');
 		case 'Loading':
-			return $elm$html$Html$text('Loading...');
+			return $author$project$Main$container(
+				_List_fromArray(
+					[$author$project$Main$navbar]));
 		default:
 			var foxUrl = model.a;
-			return A2(
-				$elm$html$Html$div,
+			return $author$project$Main$container(
 				_List_fromArray(
 					[
-						$elm$html$Html$Attributes$class('rootcontainer')
-					]),
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$div,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$class('navbar')
-							]),
-						_List_fromArray(
-							[
-								A2(
-								$elm$html$Html$div,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$class('nav-button'),
-										$elm$html$Html$Events$onClick($author$project$Main$CopyToClipboard)
-									]),
-								_List_fromArray(
-									[$author$project$Icons$copyToClipboard])),
-								A2(
-								$elm$html$Html$div,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$class('nav-button'),
-										$elm$html$Html$Events$onClick($author$project$Main$GetFox)
-									]),
-								_List_fromArray(
-									[$author$project$Icons$newFox]))
-							])),
+						$author$project$Main$navbar,
 						A2(
 						$elm$html$Html$div,
 						_List_fromArray(
