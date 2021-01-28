@@ -1,0 +1,6 @@
+#!/bin/bash
+rm -rf doc
+mkdir  doc
+cp index.html doc/index.html
+elm-live src/Main.elm -d doc -- --output=doc/main.js
+
