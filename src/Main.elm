@@ -8,6 +8,8 @@ import Http
 import Json.Decode exposing (Decoder, field, string)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
+
+
 -- MAIN
 
 
@@ -86,6 +88,7 @@ subscriptions : Model -> Sub Msg
 subscriptions model =
   Sub.none
 
+
 -- VIEW
 view : Model -> Html Msg
 view model =
@@ -93,7 +96,7 @@ view model =
     Failure ->
       text "Could not load the fox"
 
-    Loading -> 
+    Loading ->
       container [
         navbar
       ]
@@ -110,7 +113,7 @@ view model =
 container elements =
   div [class "rootcontainer"] elements
 
-navbar = 
+navbar =
   div [class "navbar"]
   [
     div [class "nav-button", onClick CopyToClipboard] [Icons.copyToClipboard],
