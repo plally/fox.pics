@@ -1,10 +1,8 @@
 #!/bin/bash
-rm -rf doc
+rm -rf docs
 
-mkdir -p doc
-cp index.html doc/index.html
+mkdir -p docs
+cp index.html docs/index.html
 
-elm make src/Main.elm --output doc/main.js --optimize
-uglifyjs doc/main.js --compress 'pure_funcs="F2,F3,F4,F5,F6,F7,F8,F9,A2,A3,A4,A5,A6,A7,A8,A9",pure_getters=true,keep_fargs=false,unsafe_comps=true,unsafe=true,passes=2' --output doc/main.js && uglifyjs doc/main.js --mangle --output doc/main.js
-
-mv doc doc
+elm make src/Main.elm --output docs/main.js --optimize
+uglifyjs docs/main.js --compress 'pure_funcs="F2,F3,F4,F5,F6,F7,F8,F9,A2,A3,A4,A5,A6,A7,A8,A9",pure_getters=true,keep_fargs=false,unsafe_comps=true,unsafe=true,passes=2' --output docs/main.js && uglifyjs docs/main.js --mangle --output docs/main.js
