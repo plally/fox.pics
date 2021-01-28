@@ -1,5 +1,7 @@
 #!/bin/bash
 rm -rf public
+rm -rf doc
+
 mkdir -p public
 cp index.html public/index.html
 
