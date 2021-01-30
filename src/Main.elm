@@ -112,7 +112,7 @@ view model =
     Loading ->
       container [
         navbar,
-        text "loading"
+        h1 [align "center"] [ text "Loading your foxes!" ]
       ]
     Success foxes ->
       container [
