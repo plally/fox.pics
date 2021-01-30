@@ -23,12 +23,12 @@ main =
 
 
 
--- MODEL
+--  MODEL
 
 type Model
   = Failure
   | Loading
-  | Success String
+  | Success (List String)
 
 
 init : () -> (Model, Cmd Msg)
@@ -36,7 +36,7 @@ init _ =
   ( Loading, requestNewFox )
 
 type Msg
-  = GotFox (Result Http.Error String)
+  = GotFox (Result Http.Error (List String))
   | CopyToClipboard
   | GetFox
 
@@ -46,18 +46,26 @@ update msg model =
   case msg of
     CopyToClipboard ->
       case model of
-        Success url -> (model, writeClipboard url)
+        Success foxes -> (model, writeClipboard <| getCurrentFox foxes)
         _ -> (model, Cmd.none)
 
     GetFox ->
-      (Loading, requestNewFox)
+      case model of
+        Success foxes ->
+          let
+              newFoxes = unwrap [] <| List.tail foxes
+          in
+            if List.isEmpty newFoxes then
+              (Loading, requestNewFox)
+            else
+              (Success newFoxes, Cmd.none)
+        Loading -> (model, Cmd.none)
+        _ -> (Loading, requestNewFox)
 
     GotFox result ->
       case result of
-        Ok foxId ->
-          ( Success ("https://fox.foxorsomething.net/" ++ foxId ++ ".png")
-          , Cmd.none
-          )
+        Ok foxes ->
+          ( Success foxes, Cmd.none )
 
         Err _ ->
           (Failure, Cmd.none)
@@ -65,24 +73,29 @@ update msg model =
 -- HELPER FUNCTIONS
 requestNewFox =
   Http.get
-    { url = "https://fox.foxorsomething.net/random.json"
+    { url = "https://vtt20ior3c.execute-api.us-east-2.amazonaws.com/fox-pics"
     , expect = Http.expectJson GotFox foxDecoder
     }
 
-foxDecoder : Decoder  String
+foxDecoder : Decoder (List String)
 foxDecoder =
-  field "id" string
+  Json.Decode.list string
 
-writeModelToClipboard model =
-  case model of
-    Success url -> (model, writeClipboard url)
-    _ -> (model, Cmd.none)
+unwrap : a -> Maybe a -> a
+unwrap default maybev =
+  case maybev of
+    Just v ->
+      v
+    Nothing ->
+      default
+
+getCurrentFox foxes =
+  unwrap "" <| List.head <|foxes
 
 -- PORTS
 port writeClipboard : String -> Cmd msg
 
 -- SUBSCRIPTIONS
-
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
@@ -98,15 +111,15 @@ view model =
 
     Loading ->
       container [
-        navbar
+        navbar,
+        text "loading"
       ]
-
-    Success foxUrl ->
+    Success foxes ->
       container [
         navbar
         ,div [class "fox-container"]
         [
-          img [class "fox-img", src foxUrl] []
+          img [class "fox-img", src <| getCurrentFox foxes] []
         ]
       ]
 
