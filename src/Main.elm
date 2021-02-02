@@ -1,6 +1,7 @@
 port module Main exposing (main)
 
 import Icons
+import Config exposing (apiEndpoint)
 
 import Browser
 import Html exposing (..)
@@ -73,7 +74,7 @@ update msg model =
 -- HELPER FUNCTIONS
 requestNewFox =
   Http.get
-    { url = "https://vtt20ior3c.execute-api.us-east-2.amazonaws.com/fox-pics"
+    { url = Config.apiEndpoint "fox-pics"
     , expect = Http.expectJson GotFox foxDecoder
     }
 
@@ -114,6 +115,7 @@ view model =
         navbar,
         h1 [align "center"] [ text "Loading your foxes!" ]
       ]
+
     Success foxes ->
       container [
         navbar
