@@ -119,9 +119,9 @@ view model =
     Success foxes ->
       container [
         navbar
-        ,div [class "fox-container"]
+        ,main_ [class "fox-container"]
         [
-          img [class "fox-img", src <| getCurrentFox foxes] []
+          img [class "fox-img", alt "fox",  src <| getCurrentFox foxes] []
         ]
       ]
 
@@ -129,9 +129,9 @@ container elements =
   div [class "rootcontainer"] elements
 
 navbar =
-  div [class "navbar"]
+  nav [class "navbar"]
   [
     div [class "nav-button", onClick CopyToClipboard] [Icons.copyToClipboard],
     div [class "nav-button", onClick GetFox] [Icons.newFox],
-    a [ href "https://github.com/plally/fox_pics_frontend", attribute "ariaLabel" "source code"] [ div [class "nav-button", id "github"] [Icons.github] ]
+    a [ href "https://github.com/plally/fox_pics_frontend", attribute "aria-label" "source code"] [ div [class "nav-button", id "github"] [Icons.github] ]
   ]
