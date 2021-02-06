@@ -67,15 +67,16 @@
 			text-decoration: none;
 		}
 
-		.nav-button:hover {
-            transition: 400ms;
-			background-color: orange;
-		}
         .nav-button:active {
             transition: 400ms;
             background-color: #FFF;
         }
-
+        @media (hover: hover) {
+            .nav-button:active {
+                transition: 400ms;
+                background-color: orange;
+            }
+        }
         #github {
             float: right;
         }
