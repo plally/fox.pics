@@ -25,7 +25,6 @@ main =
 
 
 --  MODEL
-
 type Model
   = Failure
   | Loading
@@ -71,10 +70,11 @@ update msg model =
         Err _ ->
           (Failure, Cmd.none)
 
+
 -- HELPER FUNCTIONS
 requestNewFox =
   Http.get
-    { url = Config.apiEndpoint "fox-pics"
+    { url = Config.apiEndpoint "get-random-foxes"
     , expect = Http.expectJson GotFox foxDecoder
     }
 
@@ -97,7 +97,6 @@ getCurrentFox foxes =
 port writeClipboard : String -> Cmd msg
 
 -- SUBSCRIPTIONS
-
 subscriptions : Model -> Sub Msg
 subscriptions model =
   Sub.none
