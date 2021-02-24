@@ -1,6 +1,6 @@
 #!/bin/bash
-rm -rf docs
-mkdir  docs
-cp index.html docs/index.html
-elm-live src/Main.elm -d docs -- --output=docs/main.js
+rm -rf public
+mkdir  public
+cp index.html public/index.html
+elm-live src/Main.elm -d public -- --output=public/main.js
 
