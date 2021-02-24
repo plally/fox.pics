@@ -2,5 +2,6 @@
 rm -rf public
 mkdir  public
 cp index.html public/index.html
+cp static/* public/
 elm-live src/Main.elm -d public -- --output=public/main.js
 
