@@ -10,7 +10,7 @@ npm install uglify-js -g
 git clone https://github.com/tdewolff/minify.git
 cd minify
 go install ./cmd/minify
-chmod +x ~/go/bin/minify
+chmod +x $GOPATH/bin/minify
 cd ..
 
 rm -rf public
@@ -20,7 +20,7 @@ mkdir -p public
 cp index.html public/index.html
 cp static/* public/
 
-~/go/bin/minify public/*.html --output public/*.html
+$GOPATH/bin/minify public/*.html --output public/*.html
 
 # build elm
 ./elm make src/Main.elm --output public/main.js --optimize
