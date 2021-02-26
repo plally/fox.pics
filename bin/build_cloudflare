@@ -9,7 +9,7 @@ npm install uglify-js -g
 # isntall minify
 git clone https://github.com/tdewolff/minify.git
 cd minify
-go install cmd/minify/.
+go install ./cmd/minify
 chmod +x ~/go/bin/minify
 cd ..
 
