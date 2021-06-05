@@ -97,16 +97,6 @@
 		app.ports.writeClipboard.subscribe(function(message) {
 			copyToClipboard(message);
 		});
-        app.ports.preloadImages.subscribe(function(message) {
-            preloadImages(message)
-        });
-        async function preloadImages(urls) {
-            urls.forEach((element) => {
-                var img = new Image();
-                img.src = images[url];
-            });
-        }
-
 		async function copyToClipboard(text) {
 			await navigator.clipboard.writeText(text);
 		}
