@@ -95,7 +95,7 @@ getCurrentFox foxes =
 
 -- PORTS
 port writeClipboard : String -> Cmd msg
--- port preloadImages : List String -> Cmd msg
+port preloadImages : List String -> Cmd msg
 
 -- SUBSCRIPTIONS
 subscriptions : Model -> Sub Msg
