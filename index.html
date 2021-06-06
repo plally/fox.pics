@@ -105,10 +105,12 @@
 		});
 
         app.ports.preloadImages.subscribe(function(message) {
-            console.log(message)
             message.forEach((url) => {
                 var img = new Image();
                 img.src = url;
+                img.onload = function() {
+                    app.ports.preloadImageReceiver.send(url);
+                }
             });
         });
 	</script>

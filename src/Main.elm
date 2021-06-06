@@ -39,6 +39,7 @@ type Msg
   = GotFox (Result Http.Error (List String))
   | CopyToClipboard
   | GetFox
+  | ImgPreloaded String
 
 
 update : Msg -> Model -> (Model, Cmd Msg)
@@ -65,11 +66,15 @@ update msg model =
     GotFox result ->
       case result of
         Ok foxes ->
-          ( Success foxes, preloadImages foxes )
+          ( Success [], preloadImages foxes )
 
         Err _ ->
           (Failure, Cmd.none)
-
+    
+    ImgPreloaded url ->
+      case model of
+        Success foxes -> ( Success <| foxes ++ [url], Cmd.none )
+        _ -> (model, Cmd.none)
 
 -- HELPER FUNCTIONS
 requestNewFox =
@@ -96,11 +101,12 @@ getCurrentFox foxes =
 -- PORTS
 port preloadImages : List String -> Cmd msg
 port writeClipboard : String -> Cmd msg
+port preloadImageReceiver : (String -> msg) -> Sub msg
 
 -- SUBSCRIPTIONS
 subscriptions : Model -> Sub Msg
 subscriptions model =
-  Sub.none
+  preloadImageReceiver ImgPreloaded
 
 
 -- VIEW
