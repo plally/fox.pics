@@ -1,126 +1,141 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
 
     <title>Foxes</title>
-	<script src="main.js"></script>
+    <script src="main.js"></script>
 
-    <meta property="og:title" content="Random Foxes"/>
-    <meta property="og:url" content="https://plally.github.io/fox_pics_frontend" />
+    <meta property="og:title" content="Random Foxes" />
+    <meta
+      property="og:url"
+      content="https://plally.github.io/fox_pics_frontend"
+    />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://store.fox.pics/a7568838-f7bc-4481-9954-220b8843a74a.jpg"/>
-    <meta property="og:description" content="Easilly get a random picture of a fox" />
-    <meta name="Description" content="A page where you can get random pictures of foxes"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta
+      property="og:image"
+      content="https://store.fox.pics/a7568838-f7bc-4481-9954-220b8843a74a.jpg"
+    />
+    <meta
+      property="og:description"
+      content="Easilly get a random picture of a fox"
+    />
+    <meta
+      name="Description"
+      content="A page where you can get random pictures of foxes"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	<style>
- 		:root {
-        	font-size: 16px;
-        	--nav-background-primary: #222;;
-    	}
+    <style>
+      :root {
+        font-size: 16px;
+        --nav-background-primary: #222;
+      }
 
-		html, body, .rootcontainer {
-			height: 100%;
-			margin: 0;
-			padding: 0;
-			background-color: black;
-            color: #FFF;
-		}
+      html,
+      body,
+      .rootcontainer {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: black;
+        color: #fff;
+      }
 
-		.rootcontainer {
-			max-height: 100%;
-			display: flex;
-			flex-flow: column;
-    	}
+      .rootcontainer {
+        max-height: 100%;
+        display: flex;
+        flex-flow: column;
+      }
 
-		.fox-container {
-        	background-color: black;
-        	flex: 1;
-        	overflow: hidden;
-    	}
+      .fox-container {
+        background-color: black;
+        flex: 1;
+        overflow: hidden;
+      }
 
-		.fox-img {
-			width: 100%;
-			height: 100%;
-			max-width: 100%;
-			max-height: 100%;
+      .fox-img {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
 
-			object-fit: contain;
-		}
+        object-fit: contain;
+      }
 
-		.navbar {
-			width: 100%;
-			padding: 0;
-			margin: 0;
-			background-color: var(--nav-background-primary);
-		}
+      .navbar {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        background-color: var(--nav-background-primary);
+      }
 
-		.nav-button {
-            cursor: pointer;
-			position: relative;
-			background-color: var(--nav-background-primary);
-			color: lightgray;
-			float: left;
-			align-items: center;
-			padding: 1.2rem 1.2rem;
-			text-decoration: none;
-		}
+      .nav-button {
+        cursor: pointer;
+        position: relative;
+        background-color: var(--nav-background-primary);
+        color: lightgray;
+        float: left;
+        align-items: center;
+        padding: 1.2rem 1.2rem;
+        text-decoration: none;
+      }
 
-        @media (hover: hover) {
-            .nav-button:hover {
-                transition: 400ms;
-                background-color: orange;
-            }
+      @media (hover: hover) {
+        .nav-button:hover {
+          transition: 400ms;
+          background-color: orange;
         }
+      }
 
-        .nav-button:active {
-            transition: 400ms;
-            background-color: #FFF;
-        }
+      .nav-button:active {
+        transition: 400ms;
+        background-color: #fff;
+      }
 
-        #github {
-            float: right;
-        }
+      #github {
+        float: right;
+      }
+    </style>
+  </head>
 
-	</style>
-</head>
-
-<body>
-
+  <body>
     <div id="myapp"></div>
 
     <script>
-		var app = Elm.Main.init({
-		    node: document.getElementById('myapp')
-		});
+      var app = Elm.Main.init({
+        node: document.getElementById("myapp")
+      });
 
+      async function copyToClipboard(text) {
+        await navigator.clipboard.writeText(text);
+      }
 
-		async function copyToClipboard(text) {
-			await navigator.clipboard.writeText(text);
-		}
+      app.ports.writeClipboard.subscribe(function(message) {
+        copyToClipboard(message);
+      });
 
-		app.ports.writeClipboard.subscribe(function(message) {
-			copyToClipboard(message);
-		});
-
-        app.ports.preloadImages.subscribe(function(message) {
-            message.forEach((url) => {
-                var img = new Image();
-                img.src = url;
-                img.onload = function() {
-                    app.ports.preloadImageReceiver.send(url);
-                }
-            });
+      app.ports.preloadImages.subscribe(function(message) {
+        message.forEach(url => {
+          var img = new Image();
+          img.src = url;
+          img.onload = function() {
+            app.ports.preloadImageReceiver.send(url);
+          };
         });
-	</script>
+      });
+    </script>
 
     <noscript>
-        <h1> This site requires Javascript to function </h1>
+      <h1>This site requires Javascript to function</h1>
     </noscript>
 
-
-    <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d3802023e9034233ab5568ecbc87993d", "spa": true}'></script><!-- End Cloudflare Web Analytics -->
-
-</body>
+    <!-- Cloudflare Web Analytics -->
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "d3802023e9034233ab5568ecbc87993d", "spa": true}'
+    ></script>
+    <!-- End Cloudflare Web Analytics -->
+  </body>
 </html>
