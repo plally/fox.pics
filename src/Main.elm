@@ -65,7 +65,7 @@ update msg model =
     GotFox result ->
       case result of
         Ok foxes ->
-          ( Success foxes, Cmd.none )
+          ( Success foxes, preloadImages foxes )
 
         Err _ ->
           (Failure, Cmd.none)
@@ -94,8 +94,8 @@ getCurrentFox foxes =
   unwrap "" <| List.head <|foxes
 
 -- PORTS
-port writeClipboard : String -> Cmd msg
 port preloadImages : List String -> Cmd msg
+port writeClipboard : String -> Cmd msg
 
 -- SUBSCRIPTIONS
 subscriptions : Model -> Sub Msg
