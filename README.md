@@ -1,4 +1,4 @@
-## the source code for [fox.pics](https://fox.pics/)
+## The source code for [fox.pics](https://fox.pics/) frontend
 
 
 #### included scripts 
