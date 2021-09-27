@@ -139,5 +139,5 @@ navbar =
   [
     div [class "nav-button", onClick CopyToClipboard] [Icons.copyToClipboard],
     div [class "nav-button", onClick GetFox] [Icons.newFox],
-    a [ href "https://github.com/plally/fox_pics_frontend", attribute "aria-label" "source code"] [ div [class "nav-button", id "github"] [Icons.github] ]
+    a [ href "https://github.com/plally/fox_pics_frontend", attribute "aria-label" "source ecode"] [ div [class "nav-button", id "github"] [Icons.github] ]
   ]
