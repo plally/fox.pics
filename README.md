@@ -1,10 +1,10 @@
 ## The source code for [fox.pics](https://fox.pics/) frontend
 
-### API
+### API Docs
 **BaseURL**: https://api.fox.pics/v1/
-| Endpoint                                     | Description                                      |
+| Endpoint                                         | Description                                      |
 | ------------------------------------------------ | ------------------------------------------------ |
-| get-random-foxes?amount=n     | Get N random pictures of foxes                                  |
+| get-random-foxes?amount=n                        | Get N random pictures of foxes                   |
 
 ### Scripts
 * `bin/build` - builds the project 
