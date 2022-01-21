@@ -1,4 +1,4 @@
-# fox.pics
+# [fox.pics](https://fox.pics)
 A website and api that provides random pictures of foxes
 
 ### API
