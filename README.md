@@ -1,7 +1,7 @@
 # fox.pics
 A website and api that provides random pictures of foxes
 
-### API Docs
+### API
 **BaseURL**: https://api.fox.pics/v1/
 | Method |Endpoint | Description |
 | --- |--------------------| --------------- |
