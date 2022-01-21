@@ -1,5 +1,10 @@
-# [fox.pics](https://fox.pics)
-A website and api that provides random pictures of foxes
+<div align="center">
+    <h1><a href=https://fox.pics>fox.pics</a></h1>
+    <i>A website and api that provides random pictures of foxes</i>
+</div>
+
+<br>
+<br>
 
 ### API
 **BaseURL**: https://api.fox.pics/v1/
