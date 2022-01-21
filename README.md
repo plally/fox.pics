@@ -1,4 +1,5 @@
-## The source code for [fox.pics](https://fox.pics/) frontend
+# fox.pics
+A website and api that provides random pictures of foxes
 
 ### API Docs
 **BaseURL**: https://api.fox.pics/v1/
