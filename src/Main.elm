@@ -79,7 +79,7 @@ update msg model =
 -- HELPER FUNCTIONS
 requestNewFox =
   Http.get
-    { url = Config.apiEndpoint "get-random-foxes"
+    { url = Config.apiEndpoint "v1/get-random-foxes"
     , expect = Http.expectJson GotFox foxDecoder
     }
 
