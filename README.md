@@ -2,9 +2,9 @@
 
 ### API Docs
 **BaseURL**: https://api.fox.pics/v1/
-| Endpoint                                         | Description                                      |
-| ------------------------------------------------ | ------------------------------------------------ |
-| get-random-foxes?amount=n                        | Get N random pictures of foxes                   |
+| Method |Endpoint | Description |
+| --- |--------------------| --------------- |
+| GET | get-random-foxes?amount=n | Get N random pictures of foxes                   |
 
 ### Scripts
 * `bin/build` - builds the project 
