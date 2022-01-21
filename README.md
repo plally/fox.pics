@@ -5,7 +5,7 @@ A website and api that provides random pictures of foxes
 **BaseURL**: https://api.fox.pics/v1/
 | Method |Endpoint | Description |
 | --- |--------------------| --------------- |
-| GET | get-random-foxes?amount=n | Get n random pictures of foxes. Returns a list of urls. n can not be greater than 24 |
+| GET | get-random-foxes?amount=n | Get n random pictures of foxes. Returns a list of urls. n can not be greater than 25 |
 
 ### Scripts
 * `bin/build` - builds the project 
