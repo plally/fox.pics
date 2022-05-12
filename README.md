@@ -16,7 +16,6 @@
 | --- |--------------------| --------------- |
 | GET | get-random-foxes?amount=n | Get n random pictures of foxes. Returns a list of urls. n can not be greater than 25 |
 
-
 <div align="center">
     <h3>Scripts</h3>
 </div>
@@ -24,3 +23,8 @@
 * `bin/build` - builds the project 
 * `bin/build_cloudflare` - a build script made for cloudflare pages
 * `bin/serve` - serve the project locally, for developement purposes.
+
+<div aligh="center">
+    <h3>Tools Used</h3>
+</div>
+- https://levelteams.com/svg-to-elm
