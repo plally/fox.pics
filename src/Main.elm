@@ -39,7 +39,7 @@ type alias Model =
 
 init : () -> (Model, Cmd Msg)
 init _ =
-  ( Model Loading True, requestNewFox )
+  ( Model Loading False, requestNewFox )
 
 type Msg
   = GotFox (Result Http.Error (List String))
