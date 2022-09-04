@@ -157,9 +157,9 @@ navbar : Model -> Html Msg
 navbar model =
   nav [class "navbar"]
   [
-    div [class "nav-button", onClick CopyToClipboard] [Icons.copyToClipboard],
-    div [class "nav-button", onClick GetFox] [Icons.newFox],
-    a [ onClick OpenInfoModel, attribute "aria-label" "information"] [ div [class "nav-button", id "github"] [Icons.info] ],
+    button [class "nav-button", onClick CopyToClipboard] [Icons.copyToClipboard],
+    button [class "nav-button", onClick GetFox] [Icons.newFox],
+    a [ onClick OpenInfoModel, attribute "aria-label" "information"] [ button [class "nav-button", id "github"] [Icons.info] ],
     modal model.modalOpen
   ]
 
