@@ -36,7 +36,7 @@ const corsHeader = {
 const app = new Hono<Env>()
 const v1 = new Hono<Env>()
 
-v1.use(cors({
+v1.use("*", cors({
 	origin: "*",
 	allowMethods: ["GET", "HEAD", "POST", "OPTIONS"],
 	maxAge: 86400,

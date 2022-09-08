@@ -29,7 +29,7 @@ async function handleInteraction(env: Env["Bindings"], executionContext: Executi
             type: InteractionResponseType.Pong
         }
     } else if(interaction.type == InteractionType.ApplicationCommand) {
-        if(interaction.data.name == "submitfox") {
+        if(interaction.data.name == "submitfox" || interaction.data.name == "submitfoxurl") {
             return await handleSubmitFox(interaction)
         }
     } else if (interaction.type == InteractionType.MessageComponent) {
@@ -39,7 +39,7 @@ async function handleInteraction(env: Env["Bindings"], executionContext: Executi
             return {
                 type: InteractionResponseType.UpdateMessage,
                 data: {
-                    content: "Fox denied"
+                    components: [],
                 }
             }
         }
@@ -63,6 +63,20 @@ async function handleSubmitFox(interaction: APIApplicationCommandInteraction): P
             if(!success) {
                 return
             } 
+
+            return {
+                type: InteractionResponseType.ChannelMessageWithSource,
+                data: {
+                    flags: 64,
+                    content: "submitted fox",
+                }
+            }
+        } else if(option.type == ApplicationCommandOptionType.String) {
+            const url = option.value
+            const success = await submitFoxToChannel(url)
+            if(!success) {
+                return
+            }
 
             return {
                 type: InteractionResponseType.ChannelMessageWithSource,
