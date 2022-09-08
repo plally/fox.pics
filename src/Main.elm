@@ -197,6 +197,13 @@ modal hide =
             span iconStyle [ Icons.email ],
             span textStyle [text "contact@fox.pics"]
           ]
+        ],
+       br [] [],
+        a [href "https://discord.gg/TuSf7jNX87"] [
+          span [class "info-link" ] [
+            span iconStyle [ Icons.chat ],
+            span textStyle [text "Discord"]
+          ]
         ]
       ]
     ]
