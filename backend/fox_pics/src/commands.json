@@ -1,0 +1,28 @@
+[
+    {
+        "guild_id": "1015848429718601779",
+        "name": "submitfox",
+        "description": "Submit a new fox to fox.pics",
+        "options": [
+            {
+                "type": "11",
+                "name": "image",
+                "description": "The image to submit",
+                "required": true
+            }
+        ]
+    },
+    {
+        "guild_id": "1015848429718601779",
+        "name": "submitfoxurl",
+        "description": "Submit a new fox to fox.pics",
+        "options": [
+            {
+                "type": "3",
+                "name": "url",
+                "description": "The URL of the image to submit",
+                "required": true
+            }
+        ]
+    }
+]
