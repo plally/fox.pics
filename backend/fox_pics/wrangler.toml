@@ -1,0 +1,8 @@
+name = "fox-pics"
+main = "src/index.ts"
+compatibility_date = "2022-09-04"
+kv_namespaces = [
+    { binding ="FOX_VARS", id="f3a3757f0ff3460788fd971ae3bca94d", preview_id=""}
+]
+
+node_compat=true

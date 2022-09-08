@@ -1,5 +1,6 @@
 module Config exposing (apiEndpoint)
-baseUrl = "https://api.fox.pics"
+baseUrl : String
+baseUrl = "https://fox-pics.vulpes.workers.dev"
 
 apiEndpoint : String -> String
 apiEndpoint path =
