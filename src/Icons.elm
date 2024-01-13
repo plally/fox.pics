@@ -12,3 +12,5 @@ email =FeatherIcons.mail |> FeatherIcons.toHtml []
 info = FeatherIcons.info|> FeatherIcons.toHtml []
 
 chat = FeatherIcons.messageCircle|> FeatherIcons.toHtml []
+
+atSign = FeatherIcons.atSign|> FeatherIcons.toHtml []

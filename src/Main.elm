@@ -204,6 +204,13 @@ modal hide =
             span iconStyle [ Icons.chat ],
             span textStyle [text "Discord"]
           ]
+        ],
+       br [] [],
+        a [href "https://bsky.app/profile/fox.pics"] [
+          span [class "info-link" ] [
+            span iconStyle [ Icons.atSign ],
+            span textStyle [text "BlueSky"]
+          ]
         ]
       ]
     ]
